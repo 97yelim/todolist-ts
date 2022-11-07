@@ -8,10 +8,12 @@ interface ListProps {
     contents: string,
     date:string,
     isDone:boolean,
-    updatecrr:boolean
+}
+type updateProps = {
+    updatecrr: boolean
 }
 
-const List= () => {
+const List= ({updatecrr}:updateProps) => {
     const [todoList, setTodoList] = useState <ListProps[]>([])
     const [update, setUdate] = useState(false)
     const getList = async() => {
@@ -21,7 +23,7 @@ const List= () => {
 
     useEffect(()=>{
         getList()
-    },[update])
+    },[update, updatecrr])
 
     
     const deleteHandler = (todo_id: number) => {

@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 type FormProps = {
     onSubmit: (todo: {id: number, title: string, contents: string, date: string, isDone: boolean}) => void;
-
+    
 }
 
 
@@ -23,12 +23,14 @@ const Form = ({onSubmit}: FormProps) => {
         const res = await axios.get("http://localhost:3001/todo");
         const data = res.data
         setTodoId(data[data.length - 1]?.id) 
+        console.log(data[data.length - 1]?.id)
      }
 
     useEffect(()=>{
         todoList()
-    },[])
+    },[todo.id])
 
+    
     
 
     const { title, contents } = todo

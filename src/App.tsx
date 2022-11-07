@@ -5,25 +5,21 @@ import axios from 'axios';
 import './App.css';
 import GlobalStyle from './GlobalStyle';
 
-interface ListProps {
-  update: boolean
-}
 
 
 function App() {
   
-  const [update, setUpdate] = useState(false)
-
+  const [updatecrr, setUpdatecrr] = useState(false)
   const onSubmit = (todo: {id: number, title: string, contents: string, date: string, isDone: boolean}) => {
     axios.post("http://localhost:3001/todo", todo)
-    setUpdate(!update)
-    console.log(update)
+    setUpdatecrr(!updatecrr)
   };
+  console.log(updatecrr)
   return(
     <div className="App">
       <div>
         <Form onSubmit={onSubmit} />
-        <List/>
+        <List updatecrr={updatecrr}/>
         <GlobalStyle/>
       </div>
     </div>
